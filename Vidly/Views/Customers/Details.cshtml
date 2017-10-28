@@ -1,0 +1,15 @@
+﻿@model Vidly.Models.Customer
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<p>@Model.Id</p>
+<p>@Model.Name</p>
+<p>@Model.MembershipType.Name</p>
+@if (@Model.Birthday != null)
+{
+    <p>@Model.GetFormattedBirthday()</p>
+}
