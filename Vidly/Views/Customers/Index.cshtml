@@ -7,8 +7,9 @@
 <h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "New")
 </p>
+
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -25,18 +26,12 @@
         {
             <tr>
                 <td>
-                    @customer.Name
+                    @Html.ActionLink(@customer.Name, "Edit", new { id = customer.Id }) 
                 </td>
                 <td>
                     @customer.MembershipType.Name
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = customer.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = customer.Id }) |
-                    @*  @Html.ActionLink("Delete", "Delete", new { id = customer.Id }) *@
                 </td>
             </tr>
         }
     </tbody>
 </table>
-
