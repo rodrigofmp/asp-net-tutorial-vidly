@@ -58,9 +58,26 @@ namespace Vidly.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Customer customer)
+        public ActionResult Save(Customer customer)
         {
-            _context.Customers.Add(customer);
+            if (customer.Id == 0)
+                _context.Customers.Add(customer);
+            else
+            {
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+
+                // Dangerous way because malicious form could add new fields to update
+                //TryUpdateModel(customerInDb);
+
+                // Bad beacause you lose refector
+                //TryUpdateModel(c, "", new string[] { "Name", "Email" });
+
+                customerInDb.Name = customer.Name;
+                customerInDb.Birthday = customer.Birthday;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                customerInDb.IsSubscribedToNewsletters = customer.IsSubscribedToNewsletters;
+            }
+
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Customers");
