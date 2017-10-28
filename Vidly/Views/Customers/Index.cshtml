@@ -6,54 +6,37 @@
 
 <h2>@ViewBag.Title</h2>
 
-@*
-    @if (Model.Customers.Count == 0)
-    {
-        <text>No customers to list.</text>
-    }
-    else {
-        <ul>
-            @foreach (var customer in Model.Customers)
-            {
-                <li>@Html.ActionLink(@customer.Name, "Details", new { id = @customer.Id })</li>
-            }
-        </ul>
-    }
-*@
-
-        <p>
-            @* @Html.ActionLink("Create New", "Create") *@
-    </p>
-    <table class="table table-bordered table-hover">
-        <thead>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Membership Type
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model.Customers)
+        {
             <tr>
-                <th>
-                    Customer @* @Html.DisplayNameFor(model => model.Name) *@
-                    </th>
-                    <th>
-                        Membership Type@* @Html.DisplayNameFor(model => model.email) *@
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var customer in Model.Customers)
-                {
-                    <tr>
-                        <td>
-                            @* @Html.DisplayFor(modelItem => item.nome) *@
-                            @customer.Name
-                        </td>
-                        <td>
-                            @* @Html.DisplayFor(modelItem => item.email) *@
-                            @customer.MembershipType.Name
-                        </td>
-                        <td>
-                            @*  @Html.ActionLink("Edit", "Edit", new { id = customer.Id }) | *@
-                            @Html.ActionLink("Details", "Details", new { id = customer.Id }) |
-                            @*  @Html.ActionLink("Delete", "Delete", new { id = customer.Id }) *@
-                        </td>
-                    </tr>
-                }
-            </tbody>
-    </table>
+                <td>
+                    @customer.Name
+                </td>
+                <td>
+                    @customer.MembershipType.Name
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = customer.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = customer.Id }) |
+                    @*  @Html.ActionLink("Delete", "Delete", new { id = customer.Id }) *@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 
