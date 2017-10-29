@@ -21,11 +21,5 @@ namespace Vidly.Models
         [Display(Name = "Date of Birth")]
         [Min18YearsIfAMember]
         public DateTime? Birthday { get; set; }
-
-        public string GetFormattedBirthday()
-        {
-            DateTime date = (DateTime) Birthday;
-            return date.ToString("dd/MM/yyyy");
-        }
     }
 }
