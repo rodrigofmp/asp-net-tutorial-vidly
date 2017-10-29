@@ -5,6 +5,11 @@ namespace Vidly.Models
 {
     public class Movie
     {
+        public Movie()
+        {
+            DateAdded = DateTime.Now;
+        }
+
         public int Id { get; set; }
 
         [Required]
