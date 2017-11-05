@@ -297,6 +297,3 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
-
-# Authentication
-Vidly/App_Start/Startup.Auth.cs
