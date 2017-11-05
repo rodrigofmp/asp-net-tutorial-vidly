@@ -13,6 +13,7 @@ namespace Vidly.Models
         [StringLength(255)]
         public string DrivingLicense { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string Phone { get; set; }
 
